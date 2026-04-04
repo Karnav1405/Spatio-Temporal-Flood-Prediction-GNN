@@ -18,6 +18,18 @@ This project applies spatio-temporal deep learning to the 2018 Kerala floods as 
 - Key finding: Idukki and Wayanad were the most affected districts, with peak flood severity during August 15–17
 - Data source: Kaggle (Devakumar K.P.)
 
+## Visualizations
+
+- Kerala District Graph: 14 districts as nodes, 24 edges representing shared borders between neighboring districts. High risk districts (Idukki, Wayanad, Malappuram) highlighted in red.
+- Peak Flood Day Map (August 15, 2018): Every district shown in red confirming August 15 was a state-wide catastrophe with no district safe.
+
+## Graph Details
+
+- Nodes: 14 Kerala districts
+- Edges: 24 border connections (48 directional)
+- Input to model: 5 days of flood severity across all 14 districts
+- Output from model: next day warning level for all 14 districts
+
 ## How It Works
 
 - Spatial modeling with GNN: each node represents a Kerala district, and edges represent geographic connectivity between neighboring districts
