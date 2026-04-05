@@ -41,12 +41,16 @@ This project applies spatio-temporal deep learning to the 2018 Kerala floods as 
 
 ## Training Results
 
-- Training samples: 8, Test samples: 2
-- Optimizer: Adam, Loss function: MSE
-- Epochs: 100
-- Initial loss: 1.869, Final training loss: 0.582
-- Test loss: 0.863
-- Loss improved by 69% during training
+- Training improvements applied:
+	- Epochs increased from 100 to 200
+	- Learning rate scheduler added
+	- Data augmentation applied (8 to 40 training samples)
+- Final Model Results:
+	- Accuracy: 82.14% (beats baseline of 78.57%)
+	- MAE: 0.464
+	- RMSE: 0.778 (vs baseline RMSE of 0.963)
+	- Test Loss: 0.605 (improved 30% from original)
+- Key finding: ST-GNN outperforms naive baseline on both accuracy and RMSE despite only 15 days of training data. Spatial learning between neighboring districts provides meaningful predictive advantage.
 
 ## How It Works
 

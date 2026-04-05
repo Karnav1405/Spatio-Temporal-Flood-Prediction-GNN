@@ -50,8 +50,6 @@ def train_model():
     # Split: 80% train, 20% test.
     num_samples = x.size(0)
     train_size = int(0.8 * num_samples)
-    test_size = num_samples - train_size
-
     permutation = torch.randperm(num_samples)
     train_idx = permutation[:train_size]
     test_idx = permutation[train_size:]
@@ -65,24 +63,31 @@ def train_model():
     model = STGNNModel(spatial_hidden_dim=16, temporal_hidden_dim=32)
     criterion = nn.MSELoss()
     optimizer = optim.Adam(model.parameters(), lr=0.001)
+    # Decay learning rate during training for smoother convergence.
+    scheduler = optim.lr_scheduler.StepLR(optimizer, step_size=50, gamma=0.5)
+    # Dropout on input sequences helps regularize tiny datasets.
+    input_dropout = nn.Dropout(p=0.2)
 
-    epochs = 100
+    epochs = 200
     train_losses = []
 
     for epoch in range(1, epochs + 1):
         model.train()
         optimizer.zero_grad()
 
-        predictions = model(x_train, edge_index)
+        x_train_reg = input_dropout(x_train)
+        predictions = model(x_train_reg, edge_index)
         loss = criterion(predictions, y_train)
 
         loss.backward()
         optimizer.step()
+        scheduler.step()
 
         train_losses.append(loss.item())
 
         if epoch % 10 == 0:
-            print(f"Epoch {epoch:03d}/{epochs} - Train Loss: {loss.item():.6f}")
+            current_lr = scheduler.get_last_lr()[0]
+            print(f"Epoch {epoch:03d}/{epochs} - Train Loss: {loss.item():.6f} - LR: {current_lr:.6f}")
 
     model.eval()
     with torch.no_grad():
