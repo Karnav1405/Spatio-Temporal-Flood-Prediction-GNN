@@ -52,6 +52,25 @@ This project applies spatio-temporal deep learning to the 2018 Kerala floods as 
 	- Test Loss: 0.605 (improved 30% from original)
 - Key finding: ST-GNN outperforms naive baseline on both accuracy and RMSE despite only 15 days of training data. Spatial learning between neighboring districts provides meaningful predictive advantage.
 
+## Web Application
+
+- Built using Streamlit
+- Interactive next-day flood warning prediction
+- Features:
+	- Select any of 14 Kerala districts from dropdown
+	- Enter last 5 days warning levels using sliders
+	- Click Predict Tomorrow to get next day prediction
+	- Shows prediction for selected district and neighboring districts
+	- Displays Kerala district graph visualization
+- Run locally with: python -m streamlit run app.py
+
+## Results Summary
+
+- Final model accuracy: 82.14% (beats baseline of 78.57%)
+- Best predicted district: Pathanamthitta (MAE = 0.134)
+- Worst predicted district: Kasaragod (MAE = 1.477)
+- Key finding: Model performs best on well connected districts with multiple neighbors. Isolated districts like Kasaragod with only one neighbor perform worse due to limited spatial learning context.
+
 ## How It Works
 
 - Spatial modeling with GNN: each node represents a Kerala district, and edges represent geographic connectivity between neighboring districts
