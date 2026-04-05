@@ -30,6 +30,24 @@ This project applies spatio-temporal deep learning to the 2018 Kerala floods as 
 - Input to model: 5 days of flood severity across all 14 districts
 - Output from model: next day warning level for all 14 districts
 
+## Model Architecture
+
+- Model name: ST-GNN (Spatio-Temporal Graph Neural Network)
+- Layer 1: GCNConv - spatial learning across neighboring districts
+- Layer 2: GRU - temporal learning across 5 days of history
+- Layer 3: Linear - outputs flood warning prediction
+- Input: 5 days of flood severity across 14 districts
+- Output: next day warning level for all 14 districts
+
+## Training Results
+
+- Training samples: 8, Test samples: 2
+- Optimizer: Adam, Loss function: MSE
+- Epochs: 100
+- Initial loss: 1.869, Final training loss: 0.582
+- Test loss: 0.863
+- Loss improved by 69% during training
+
 ## How It Works
 
 - Spatial modeling with GNN: each node represents a Kerala district, and edges represent geographic connectivity between neighboring districts
