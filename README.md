@@ -2,7 +2,7 @@
 
 ![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB?logo=python&logoColor=white)
 ![PyTorch](https://img.shields.io/badge/PyTorch-Deep%20Learning-EE4C2C?logo=pytorch&logoColor=white)
-![Status](https://img.shields.io/badge/Status-Data%20Exploration%20Complete-27AE60)
+![Status](https://img.shields.io/badge/Status-Complete-27AE60)
 
 ## Project Description
 
