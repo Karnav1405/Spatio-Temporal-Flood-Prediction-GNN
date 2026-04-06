@@ -52,18 +52,6 @@ This project applies spatio-temporal deep learning to the 2018 Kerala floods as 
 	- Test Loss: 0.605 (improved 30% from original)
 - Key finding: ST-GNN outperforms naive baseline on both accuracy and RMSE despite only 15 days of training data. Spatial learning between neighboring districts provides meaningful predictive advantage.
 
-## Web Application
-
-- Built using Streamlit
-- Interactive next-day flood warning prediction
-- Features:
-	- Select any of 14 Kerala districts from dropdown
-	- Enter last 5 days warning levels using sliders
-	- Click Predict Tomorrow to get next day prediction
-	- Shows prediction for selected district and neighboring districts
-	- Displays Kerala district graph visualization
-- Run locally with: python -m streamlit run app.py
-
 ## Results Summary
 
 - Final model accuracy: 82.14% (beats baseline of 78.57%)
@@ -126,4 +114,12 @@ flood-gnn-project/
 	python test_setup.py
 ```
 
-5. Start experimentation in the notebooks folder and move reusable code into models and utils.
+5. Run the notebooks in order:
+1. python notebooks/explore_data.py
+2. python notebooks/visualize_data.py
+3. python notebooks/prepare_data.py
+4. python utils/graph_builder.py
+5. python utils/data_loader.py
+6. python notebooks/train_model.py
+7. python notebooks/evaluate_model.py
+8. python notebooks/final_results.py
